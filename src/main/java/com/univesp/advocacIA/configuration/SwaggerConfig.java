@@ -30,10 +30,10 @@ public class SwaggerConfig {
                                 .url("https://univesp.br/"))
                         .contact(new Contact()
                                 .name("AdvocacIA")
-                                .url("https://github.com/ProjetoAdvocacIA")))
+                                .url("https://github.com/SayuriCristina")))
                 .externalDocs(new ExternalDocumentation()
                         .description("Github: Back-end")
-                        .url("https://github.com/ProjetoAdvocacIA/AdvocacIA_Back-end"))
+                        .url("https://github.com/SayuriCristina/AdvocacIA"))
                 .components(new Components()
                         .addSecuritySchemes("jwt_auth", createSecurityScheme()))
                 .addSecurityItem(new SecurityRequirement().addList("jwt_auth"));

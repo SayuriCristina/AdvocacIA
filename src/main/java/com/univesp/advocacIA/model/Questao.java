@@ -39,17 +39,12 @@ public class Questao {
     @Size(min = 5, message = "Alternativa D deve ter pelo menos 5 caracteres")
     private String alternativaD;
 
-    @NotBlank(message = "Alternativa E não pode estar vazia")
-    @Column(length = 1000)
-    @Size(min = 5, message = "Alternativa E deve ter pelo menos 5 caracteres")
-    private String alternativaE;
-
     @Enumerated(EnumType.STRING)
     @NotNull(message = "A resposta correta deve ser informada")
     private Resposta resposta;
 
     public enum Resposta {
-        A, B, C, D, E
+        A, B, C, D
     }
 
     public enum FaseOAB {
@@ -121,14 +116,6 @@ public class Questao {
 
     public void setAlternativaD(String alternativaD) {
         this.alternativaD = alternativaD;
-    }
-
-    public String getAlternativaE() {
-        return alternativaE;
-    }
-
-    public void setAlternativaE(String alternativaE) {
-        this.alternativaE = alternativaE;
     }
 
     public Resposta getResposta() {

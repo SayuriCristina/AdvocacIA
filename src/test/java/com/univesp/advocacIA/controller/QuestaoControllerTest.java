@@ -43,7 +43,6 @@ class QuestaoControllerTest {
     private static final String ALT_B = "Alternativa B incorreta";
     private static final String ALT_C = "Alternativa C incorreta";
     private static final String ALT_D = "Alternativa D incorreta";
-    private static final String ALT_E = "Alternativa E incorreta";
 
 
     @BeforeAll
@@ -67,7 +66,7 @@ class QuestaoControllerTest {
         // Given
         Questao questao = TestBuilder.criarQuestao(null,
                 "Uma questão sobre direito constitucional na OAB?",
-                ALT_A, ALT_B, ALT_C, ALT_D, ALT_E,
+                ALT_A, ALT_B, ALT_C, ALT_D,
                 A, "Geografia"
         );
 
@@ -89,12 +88,12 @@ class QuestaoControllerTest {
         // Given
         questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão 1 de História",
-                        ALT_A, ALT_B, ALT_C, ALT_D, ALT_E, A,"Historia")
+                        ALT_A, ALT_B, ALT_C, ALT_D, A,"Historia")
         );
 
         questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão 2 de Matemática",
-                        ALT_A, ALT_B, ALT_C, ALT_D, ALT_E, A,"Matemática")
+                        ALT_A, ALT_B, ALT_C, ALT_D, A,"Matemática")
         );
 
         // When
@@ -118,7 +117,7 @@ class QuestaoControllerTest {
         // Given
         Questao salva = questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão teste ID para Biologia",
-                        ALT_A, ALT_B, ALT_C, ALT_D, ALT_E, A,"Biologia")
+                        ALT_A, ALT_B, ALT_C, ALT_D, A,"Biologia")
         );
 
         // When
@@ -140,7 +139,7 @@ class QuestaoControllerTest {
         // Given
         Questao salva = questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão antiga de Física",
-                        ALT_A, ALT_B, ALT_C, ALT_D, ALT_E, A,"Física")
+                        ALT_A, ALT_B, ALT_C, ALT_D, A,"Física")
         );
 
         salva.setEnunciado("Questão de Física atualizada com novos detalhes");
@@ -163,7 +162,7 @@ class QuestaoControllerTest {
         // Given
         Questao salva = questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão a deletar de Química",
-                        ALT_A, ALT_B, ALT_C, ALT_D, ALT_E, A,"Química")
+                        ALT_A, ALT_B, ALT_C, ALT_D, A,"Química")
         );
 
         // When

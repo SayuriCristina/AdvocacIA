@@ -30,7 +30,6 @@ public class TestBuilder {
             String alternativaB,
             String alternativaC,
             String alternativaD,
-            String alternativaE,
             Questao.Resposta resposta,
             String assunto) {
 
@@ -41,7 +40,6 @@ public class TestBuilder {
         novaQuestao.setAlternativaB(alternativaB);
         novaQuestao.setAlternativaC(alternativaC);
         novaQuestao.setAlternativaD(alternativaD);
-        novaQuestao.setAlternativaE(alternativaE);
         novaQuestao.setResposta(resposta);
         novaQuestao.setAssunto(assunto);
         novaQuestao.setFaseOAB(Questao.FaseOAB.PRIMEIRA_FASE);
