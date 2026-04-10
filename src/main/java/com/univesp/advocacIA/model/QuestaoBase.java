@@ -43,6 +43,14 @@ public abstract class QuestaoBase {
         FACIL, MEDIO, DIFICIL
     }
 
+    public enum TipoQuestao {
+        MULTIPLA_ESCOLHA, DISSERTATIVA
+    }
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_questao_discriminator", insertable = false, updatable = false)
+    private TipoQuestao tipoQuestao;
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -82,6 +90,14 @@ public abstract class QuestaoBase {
 
     public void setDificuldade(Dificuldade dificuldade) {
         this.dificuldade = dificuldade;
+    }
+
+    public TipoQuestao getTipoQuestao() {
+        return tipoQuestao;
+    }
+
+    public void setTipoQuestao(TipoQuestao tipoQuestao) {
+        this.tipoQuestao = tipoQuestao;
     }
 
 }

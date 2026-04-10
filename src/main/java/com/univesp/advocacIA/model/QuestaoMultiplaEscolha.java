@@ -21,6 +21,10 @@ public class QuestaoMultiplaEscolha extends QuestaoBase {
     @Enumerated(EnumType.STRING)
     private Resposta resposta;
 
+    public QuestaoMultiplaEscolha() {
+        this.setTipoQuestao(TipoQuestao.MULTIPLA_ESCOLHA);
+    }
+
     public enum Resposta {
         A, B, C, D
     }

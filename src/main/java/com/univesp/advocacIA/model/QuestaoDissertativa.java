@@ -10,6 +10,10 @@ public class QuestaoDissertativa extends QuestaoBase {
     @Column(columnDefinition = "TEXT")
     private String respostaEsperada;
 
+    public QuestaoDissertativa() {
+        this.setTipoQuestao(TipoQuestao.DISSERTATIVA);
+    }
+
     // Getters and Setters
     public String getRespostaEsperada() {
         return respostaEsperada;
