@@ -2,7 +2,8 @@ package com.univesp.advocacIA.util;
 
 import com.univesp.advocacIA.model.Usuario;
 import com.univesp.advocacIA.model.UsuarioLogin;
-import com.univesp.advocacIA.model.Questao;
+import com.univesp.advocacIA.model.QuestaoMultiplaEscolha;
+import com.univesp.advocacIA.model.QuestaoBase;
 
 public class TestBuilder {
 
@@ -23,17 +24,17 @@ public class TestBuilder {
         return usuarioLogin;
     }
 
-    public static Questao criarQuestao(
+    public static QuestaoMultiplaEscolha criarQuestao(
             Long id,
             String enunciado,
             String alternativaA,
             String alternativaB,
             String alternativaC,
             String alternativaD,
-            Questao.Resposta resposta,
+            QuestaoMultiplaEscolha.Resposta resposta,
             String assunto) {
 
-        Questao novaQuestao = new Questao();
+        QuestaoMultiplaEscolha novaQuestao = new QuestaoMultiplaEscolha();
         novaQuestao.setId(id);
         novaQuestao.setEnunciado(enunciado);
         novaQuestao.setAlternativaA(alternativaA);
@@ -42,9 +43,8 @@ public class TestBuilder {
         novaQuestao.setAlternativaD(alternativaD);
         novaQuestao.setResposta(resposta);
         novaQuestao.setAssunto(assunto);
-        novaQuestao.setFaseOAB(Questao.FaseOAB.PRIMEIRA_FASE);
-        novaQuestao.setDificuldade(Questao.Dificuldade.MEDIO);
-        novaQuestao.setTipoQuestao(Questao.TipoQuestao.TEORICA);
+        novaQuestao.setFaseOAB(QuestaoBase.FaseOAB.PRIMEIRA_FASE);
+        novaQuestao.setDificuldade(QuestaoBase.Dificuldade.MEDIO);
 
         return novaQuestao;
     }

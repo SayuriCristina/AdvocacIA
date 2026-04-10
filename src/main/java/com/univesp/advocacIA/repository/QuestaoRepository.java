@@ -1,13 +1,13 @@
 package com.univesp.advocacIA.repository;
 
-import com.univesp.advocacIA.model.Questao;
+import com.univesp.advocacIA.model.QuestaoBase;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface QuestaoRepository extends JpaRepository<Questao, Long> {
+public interface QuestaoRepository extends JpaRepository<QuestaoBase, Long> {
 
-    public List<Questao> findAllByAssuntoContainingIgnoreCase(@Param("assunto") String assunto);
+    public List<QuestaoBase> findAllByAssuntoContainingIgnoreCase(@Param("assunto") String assunto);
 
 }

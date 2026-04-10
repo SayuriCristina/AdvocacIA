@@ -1,6 +1,7 @@
 package com.univesp.advocacIA.controller;
 
-import com.univesp.advocacIA.model.Questao;
+import com.univesp.advocacIA.model.QuestaoBase;
+import com.univesp.advocacIA.model.QuestaoMultiplaEscolha;
 import com.univesp.advocacIA.repository.QuestaoRepository;
 import com.univesp.advocacIA.repository.UsuarioRepository;
 import com.univesp.advocacIA.service.UsuarioService;
@@ -14,7 +15,7 @@ import org.springframework.http.*;
 
 import java.util.Optional;
 
-import static com.univesp.advocacIA.model.Questao.Resposta.A;
+import static com.univesp.advocacIA.model.QuestaoMultiplaEscolha.Resposta.A;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -64,16 +65,16 @@ class QuestaoControllerTest {
     void deveCadastrarQuestao() {
 
         // Given
-        Questao questao = TestBuilder.criarQuestao(null,
+        QuestaoMultiplaEscolha questao = TestBuilder.criarQuestao(null,
                 "Uma questão sobre direito constitucional na OAB?",
                 ALT_A, ALT_B, ALT_C, ALT_D,
                 A, "Geografia"
         );
 
         // When
-        HttpEntity<Questao> requisicao = JwtHelper.criarRequisicaoComToken(questao, token);
-        ResponseEntity<Questao> resposta = testRestTemplate.exchange(
-                BASE_URL + "/post", HttpMethod.POST, requisicao, Questao.class);
+        HttpEntity<QuestaoMultiplaEscolha> requisicao = JwtHelper.criarRequisicaoComToken(questao, token);
+        ResponseEntity<QuestaoBase> resposta = testRestTemplate.exchange(
+                BASE_URL + "/post", HttpMethod.POST, requisicao, QuestaoBase.class);
 
         // Then
         assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
@@ -98,8 +99,8 @@ class QuestaoControllerTest {
 
         // When
         HttpEntity<Void> requisicao = JwtHelper.criarRequisicaoComToken(token);
-        ResponseEntity<Questao[]> resposta = testRestTemplate.exchange(
-                BASE_URL + "/all", HttpMethod.GET, requisicao, Questao[].class);
+        ResponseEntity<QuestaoBase[]> resposta = testRestTemplate.exchange(
+                BASE_URL + "/all", HttpMethod.GET, requisicao, QuestaoBase[].class);
 
         // Then
         assertEquals(HttpStatus.OK, resposta.getStatusCode());
@@ -115,15 +116,15 @@ class QuestaoControllerTest {
     void deveBuscarPorId() {
 
         // Given
-        Questao salva = questaoRepository.save(
+        QuestaoBase salva = questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão teste ID para Biologia",
                         ALT_A, ALT_B, ALT_C, ALT_D, A,"Biologia")
         );
 
         // When
         HttpEntity<Void> requisicao = JwtHelper.criarRequisicaoComToken(token);
-        ResponseEntity<Questao> resposta = testRestTemplate.exchange(
-                BASE_URL + "/" + salva.getId(), HttpMethod.GET, requisicao, Questao.class);
+        ResponseEntity<QuestaoBase> resposta = testRestTemplate.exchange(
+                BASE_URL + "/" + salva.getId(), HttpMethod.GET, requisicao, QuestaoBase.class);
 
         // Then
         assertEquals(HttpStatus.OK, resposta.getStatusCode());
@@ -137,7 +138,7 @@ class QuestaoControllerTest {
     void deveAtualizarQuestao() {
 
         // Given
-        Questao salva = questaoRepository.save(
+        QuestaoBase salva = questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão antiga de Física",
                         ALT_A, ALT_B, ALT_C, ALT_D, A,"Física")
         );
@@ -145,9 +146,9 @@ class QuestaoControllerTest {
         salva.setEnunciado("Questão de Física atualizada com novos detalhes");
 
         // When
-        HttpEntity<Questao> requisicao = JwtHelper.criarRequisicaoComToken(salva, token);
-        ResponseEntity<Questao> resposta = testRestTemplate.exchange(
-                BASE_URL + "/put", HttpMethod.PUT, requisicao, Questao.class);
+        HttpEntity<QuestaoBase> requisicao = JwtHelper.criarRequisicaoComToken(salva, token);
+        ResponseEntity<QuestaoBase> resposta = testRestTemplate.exchange(
+                BASE_URL + "/put", HttpMethod.PUT, requisicao, QuestaoBase.class);
 
         // Then
         assertEquals(HttpStatus.OK, resposta.getStatusCode());
@@ -160,7 +161,7 @@ class QuestaoControllerTest {
     void deveDeletarQuestao() {
 
         // Given
-        Questao salva = questaoRepository.save(
+        QuestaoBase salva = questaoRepository.save(
                 TestBuilder.criarQuestao(null, "Questão a deletar de Química",
                         ALT_A, ALT_B, ALT_C, ALT_D, A,"Química")
         );
